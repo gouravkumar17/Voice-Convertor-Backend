@@ -7,6 +7,12 @@ const app = express(); // ✅ Define the Express app
 app.use(express.json());
 app.use(cors());
 
+app.use(cors({ 
+    origin: ["https://silver-rabanadas-c7d2b3.netlify.app/"], 
+    methods: "GET,POST",
+    credentials: true 
+  }));
+
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 app.post("/api/process-text", async (req, res) => {
